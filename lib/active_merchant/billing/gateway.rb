@@ -121,7 +121,8 @@ module ActiveMerchant #:nodoc:
                                      
       # Are we running in test mode?
       def test?
-        Base.gateway_mode == :test
+        mode = (options != nil && options.has_key?(:gateway_mode)) ? options[:gateway_mode] : Base.gateway_mode
+        mode == :test
       end
             
       private # :nodoc: all
